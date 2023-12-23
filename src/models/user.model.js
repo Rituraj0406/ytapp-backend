@@ -50,7 +50,7 @@ userSchema.pre(
     "save",
     async function (next) {
         if(!this.isModified("password")) return next();  //checking if the password is changed or not if its not changed then return false if its changed then bycrypt.hast code will run which is in bleow line.
-        this.password = bcrypt.hash(this.password, 10)
+        this.password = await bcrypt.hash(this.password, 10)
         next()
     }
 )
