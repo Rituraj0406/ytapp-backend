@@ -1,11 +1,10 @@
 // asyncHandler using Promise method
 const asyncHandler = (requestHandler) => {
     return (req, res, next) => {
-        Promise.resolve(requestHandler(req, res, next))
-        .reject((err) => next(err))
-    }
-}
-
+      Promise.resolve(requestHandler(req, res, next))
+        .catch((err) => next(err));
+    };
+  };
 
 // asyncHandler function using try and catch method
 // const asyncHandler = (fn) => async (req, res, next) => {
